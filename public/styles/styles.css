@@ -138,6 +138,21 @@ form
     margin-top: 4em;
 }
 
+.flash
+{
+    background-color: #b3f1b6;
+    border: 1px solid #0a640e;
+    border-radius: 0.3em;
+    -moz-border-radius: 0.3em;
+    webkit-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    color: #0a640e;
+    font-size: 1.7em;
+    margin: 0.5em;
+    margin-bottom: 1em;
+    padding: 0.6em;
+}
+
 label
 {
     display: block;
@@ -158,9 +173,9 @@ input[type=password]
     webkit-border-radius: 0.2em;
     -webkit-border-radius: 0.2em;
     box-shadow: 0 0 0.3em rgba(0,0,0,0.15), inset 0 0 0.5em rgba(0,0,0,0.3);
-    -moz-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
-    webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 0 0.3em rgba(0,0,0,0.15), inset 0 0 0.5em rgba(0,0,0,0.3);
+    webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.15), inset 0 0 0.5em rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.15), inset 0 0 0.5em rgba(0,0,0,0.3);
     display: block;
     font-size: 2.3em;
     margin-bottom: 0.6em;

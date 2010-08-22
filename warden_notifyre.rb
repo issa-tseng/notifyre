@@ -1,6 +1,7 @@
 require 'warden'
+require 'lib/connection_manager'
 
-ConnectionManager.manual_connect!
+Rack::ConnectionManager.manual_connect!
 require 'model/user'
 
 Warden::Manager.before_failure do |env, opts|
@@ -15,7 +16,7 @@ use Warden::Manager do |manager|
     return user.nil? ? nil : user.email
   end
   manager.serialize_from_session do |email|
-    return email.nil? ? nil : (User.find email)
+    return email.nil? ? nil : (User.first(:email =>  email))
   end
 end
 

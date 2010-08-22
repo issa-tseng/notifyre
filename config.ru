@@ -14,6 +14,7 @@ require 'lib/connection_manager'
 require 'notifyre'
 require 'sinatra'
 require 'warden'
+require 'warden_notifyre'
 
 use Rack::Session::Cookie, :secret => 'uW6kntnyhzJ7QGHdZFwoS0la7i2irxqryhTr8JQ6gWiOqwHZEONumLsgX8SEfMG'
 use Rack::ConnectionManager

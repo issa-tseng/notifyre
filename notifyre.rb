@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/content_for'
+require 'sinatra/flash'
 require 'socrata'
 require 'geokit'
 
@@ -13,6 +14,7 @@ require 'lib/tropo'
 
 class Notifyre < Sinatra::Base
   helpers Sinatra::ContentFor
+  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -24,11 +26,33 @@ class Notifyre < Sinatra::Base
 
   post '/signup' do
     user = User.create(params['user'])
-    alert = Alert.create(params['alert'].merge({ :name => 'default' }))
+    alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5 }))
     user.alerts << alert
     user.save
 
-    redirect_to :manage
+    flash[:notice] = 'A temporary password has been sent to your phone. Please check it to log in.'
+    redirect '/', 302
+  end
+
+  post '/signin' do
+    env['warden'].authenticate(:notifyre_user)
+    if env['warden'].authenticated?
+      return env['warden'].user.data.to_json
+    else
+      return error_permission_denied
+    end
+  end
+
+  get '/signout' do
+    env['warden'].logout
+    redirect '/', 302
+  end
+
+  get '/unauthenticated' do
+    status 401
+
+    flash[:notice] = 'Something went wrong when trying to sign you in. Are you sure you got everything right?'
+    redirect '/', 302
   end
 
   get '/update' do

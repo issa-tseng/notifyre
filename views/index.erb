@@ -5,6 +5,11 @@
 </div>
 
 <form action="/signup" method="POST">
+
+  <% if flash[:notice] %>
+    <div class="flash"><%= flash[:notice] %></div>
+  <% end %>
+
   <label for="email">Your Email</label>
   <input type="text" id="email" name="user[email]"/>
   <div class="signinSection">

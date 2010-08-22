@@ -8,6 +8,7 @@ gem 'socrata', '0.2.1'
 gem 'geokit', '1.5.0'
 gem 'pg', '0.9.0'
 gem 'sinatra-content-for', '0.2'
+gem 'sinatra-flash', '0.3.0'
 
 group :development do
   gem 'sqlite3-ruby', '1.3.1'
