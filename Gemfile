@@ -6,7 +6,7 @@ gem 'sequel', '3.14.0'
 gem 'warden', '0.10.7'
 gem 'socrata', '0.2.1'
 gem 'geokit', '1.5.0'
-#gem 'pg', '0.9.0'
+gem 'pg', '0.9.0'
 gem 'sinatra-content-for', '0.2'
 
 group :development do
