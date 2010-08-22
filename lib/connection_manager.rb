@@ -32,7 +32,7 @@ module Rack
     def open_connection_if_necessary!
       self.class.db ||= begin
                           add_finalizer_hook!
-                          Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/notifyre.db')
+                          Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/notifyre_dev')
                         end
     end
 

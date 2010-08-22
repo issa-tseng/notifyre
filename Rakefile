@@ -3,7 +3,7 @@ require 'sequel/extensions/migration'
 
 namespace :db do
   task :migrate do
-    db = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/notifyre.db')
+    db = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/notifyre_dev')
     Sequel::Migrator.apply(db, 'migrations')
     db.disconnect
 
