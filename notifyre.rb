@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'socrata'
+require 'geokit'
 
 Rack::ConnectionManager.manual_connect!
 
@@ -13,6 +14,12 @@ class Notifyre < Sinatra::Base
   get '/' do
     erb :index
   end
+
+  post '/signup' do
+    u = User.new
+
+  end
+
 
   get '/update' do
     # Figure out when we last pulled
@@ -58,13 +65,12 @@ class Notifyre < Sinatra::Base
     rows = socrata.view("kzjm-xkqj").filter(filter)
     @fyres = []
     @matches = {}
-    tropo = Tropo.new
     rows.each do |row|
       fyre = Fyre.new(row)
       alerts = Alert.trigger(fyre)
       if alerts.count > 0
         @matches[fyre] = alerts
-        tropo.send_text('17342761100', "There are #{alerts.count} things on fire near you now")
+        Tropo.send_text('17342761100', "There are #{alerts.count} things on fire near you now")
       end
       @fyres << fyre
     end

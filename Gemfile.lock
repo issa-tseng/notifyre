@@ -24,7 +24,7 @@ specs:
     version: 1.3.1
 - sequel: 
     version: 3.14.0
-hash: 08541b33da69f4c2ea36d413719d586f0d97b52d
+hash: c45f8e19e6fa50eaea7653c1f7e36367b207f77e
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org

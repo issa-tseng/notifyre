@@ -6,6 +6,7 @@ Sequel.migration do
       String :password, :null => false
       String :salt, :null => false
       String :phone_number, :null => false
+      Boolean :confirmed, :null => false, :default => false
     end
 
     create_table :alerts do
