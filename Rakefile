@@ -3,11 +3,11 @@ require 'sequel/extensions/migration'
 
 namespace :db do
   task :migrate do
-    db = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://notifyre.db')
+    db = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/notifyre.db')
     Sequel::Migrator.apply(db, 'migrations')
     db.disconnect
 
-    puts "migrated successfully."
+    puts "Migrated successfully."
   end
 end
 

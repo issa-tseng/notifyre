@@ -18,7 +18,14 @@ class Notifyre < Sinatra::Base
   end
 
   get '/update' do
+    # Figure out when we last pulled
     @last_pulled = Configuration.first(:name => "last_pulled")
+    if @last_pulled.nil?
+      # Never, I guess...
+      @last_pulled = Configuration.new({:name => "last_pulled",
+                                       :value => Time.now.to_i - 5*60})
+    end
+
     socrata = Socrata.new({:base_uri => "http://data.seattle.gov/api"})
 
     filter = {
@@ -58,7 +65,6 @@ class Notifyre < Sinatra::Base
     end
 
     # See who might have a notification on this
-    
 
     @last_pulled.value = Time.now.to_i
     @last_pulled.save

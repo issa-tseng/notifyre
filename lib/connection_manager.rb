@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'pg'
 require 'sequel'
 
 module Rack
@@ -7,7 +9,6 @@ module Rack
     end
 
     def initialize(app)
-      open_connection_if_necessary!
       @app = app
     end
 
@@ -31,7 +32,7 @@ module Rack
     def open_connection_if_necessary!
       self.class.db ||= begin
                           add_finalizer_hook!
-                          Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://notifyre.db')
+                          Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/notifyre.db')
                         end
     end
 

@@ -9,7 +9,7 @@ rescue LoadError
 end
 
 require 'rubygems'
-require 'model/connection_manager'
+require 'lib/connection_manager'
 require 'notifyre'
 require 'sinatra'
 require 'warden'

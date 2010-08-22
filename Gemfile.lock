@@ -2,6 +2,8 @@
 specs: 
 - json: 
     version: 1.4.6
+- geokit: 
+    version: 1.5.0
 - rack: 
     version: 1.1.0
 - warden: 
@@ -12,15 +14,17 @@ specs:
     version: 0.1.8
 - curb: 
     version: 0.7.8
+- pg: 
+    version: 0.9.0
 - httparty: 
     version: 0.6.1
 - socrata: 
     version: 0.2.1
-- sequel: 
-    version: 3.14.0
 - sqlite3-ruby: 
     version: 1.3.1
-hash: ad2c9c047fb868a40def64b6a6a0d7306854b12c
+- sequel: 
+    version: 3.14.0
+hash: 08541b33da69f4c2ea36d413719d586f0d97b52d
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
@@ -33,8 +37,16 @@ dependencies:
     version: = 3.14.0
     group: 
     - :default
+  pg: 
+    version: = 0.9.0
+    group: 
+    - :default
   sinatra: 
     version: = 1.0
+    group: 
+    - :default
+  geokit: 
+    version: = 1.5.0
     group: 
     - :default
   rack: 

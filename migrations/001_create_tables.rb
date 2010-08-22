@@ -1,13 +1,14 @@
 Sequel.migration do
   up do
     create_table :users  do
-      String :email, :null => false, :unique => true, :primary_key => true
+      primary_key :id
+      String :email, :null => false, :unique => true
       String :password, :null => false
       String :salt, :null => false
       String :phone_number, :null => false
     end
 
-    create_table :points do
+    create_table :alerts do
       primary_key :id
 
       # User-specified name for this point
@@ -35,7 +36,7 @@ Sequel.migration do
 
   down do
     drop_table :users
-    drop_table :points
+    drop_table :alerts
     drop_table :configurations
   end
 end
