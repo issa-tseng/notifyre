@@ -1,0 +1,6 @@
+h1. Notifyre — your house is on fire!
+
+Created as part of the open government data hackathon at Gnomedex 2010.
+
+Notifyre pulls live 911 fire response data and calls you when it appears that your house is on fire.
+
