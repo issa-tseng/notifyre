@@ -2,8 +2,9 @@
 
 <html>
   <head>
-    <title>Notifyre</title>
+    <title>Notifyre | Is your house on fire?</title>
     <link rel="stylesheet" type="text/css" href="/styles/styles.css"/>
+    <script type="text/javascript" src="/javascripts/jquery-1.4.2.js"></script>
   </head>
   <body>
     <div class="main">
@@ -24,5 +25,7 @@
         <a href="http://www.socrata.com"><img src="http://www.socrata.com/images/static/badges/105x51_blue.png" width="105" height="51" border="0" alt="Powered by Socrata" /></a>
       </li>
     </ul>
+
+    <% yield_content :javascripts %>
   </body>
 </html>

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/content_for'
 require 'socrata'
 require 'geokit'
 
@@ -11,6 +12,8 @@ require 'model/user'
 require 'lib/tropo'
 
 class Notifyre < Sinatra::Base
+  helpers Sinatra::ContentFor
+
   get '/' do
     erb :index
   end

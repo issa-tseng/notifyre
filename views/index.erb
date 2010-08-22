@@ -6,14 +6,25 @@
 <form action="/signup" method="POST">
   <label for="email">Your Email</label>
   <input type="text" id="email" name="email"/>
-  <label for="phone">Your Cell #</label>
-  <input type="text" id="phone" name="phone"/>
-  <label for="address">Your Address</label>
-  <input type="text" id="address" name="address"/>
+  <div class="signinSection">
+    <label for="password">A Password</label>
+    <input type="text" id="password" name="password"/>
+  </div>
+  <div class="signupSection">
+    <label for="phone">Your Cell#</label>
+    <input type="text" id="phone" name="phone"/>
+    <label for="address">Your Address</label>
+    <input type="text" id="address" name="address"/>
+  </div>
 
   <p>(We'll text you a temporary password)</p>
 
   <div class="submitLine">
     <input type="submit" value="join"/>
+    <a class="signinToggleLink" href="#signin">Already have an account?</a>
   </div>
 </form>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="/javascripts/home.js"></script>
+<% end %>
