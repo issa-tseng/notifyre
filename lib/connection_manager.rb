@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'pg'
 require 'sequel'
 
 module Rack
@@ -31,9 +29,9 @@ module Rack
     protected
     def open_connection_if_necessary!
       self.class.db ||= begin
-                          add_finalizer_hook!
-                          Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/notifyre_dev')
-                        end
+        add_finalizer_hook!
+        Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/notifyre_dev')
+      end
     end
 
     def add_finalizer_hook!

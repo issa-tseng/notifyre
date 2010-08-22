@@ -18,9 +18,17 @@ class Notifyre < Sinatra::Base
     erb :index
   end
 
-  post '/signup' do
-    u = User.new
+  get '/manage' do
+    erb :manage
+  end
 
+  post '/signup' do
+    user = User.create(params['user'])
+    alert = Alert.create(params['alert'].merge({ :name => 'default' }))
+    user.alerts << alert
+    user.save
+
+    redirect_to :manage
   end
 
   get '/update' do
