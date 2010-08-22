@@ -28,11 +28,16 @@ class Notifyre < Sinatra::Base
   end
 
   post '/signup' do
-    user = User.create(params['user'])
-    user.set_password(params['user']['password'])
-    alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5 }))
-    user.alerts << alert
-    user.save
+    begin
+      user = User.create(params['user'])
+      user.set_password(params['user']['password'])
+      alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5 }))
+      user.alerts << alert
+      user.save
+    rescue
+      flash[:notice] = 'Something went wrong when trying to sign you up. Are you sure you don\'t already have an account?'
+      redirect '/', 302
+    end
 
     flash[:notice] = 'A temporary password has been sent to your phone. Please check it to log in.'
     redirect '/', 302
