@@ -1,0 +1,11 @@
+<h2>Fires? We don't need no stikin fires.</h2>
+
+<ul>
+  <% @fyres.each do |fyre| %>
+    <li>Type: <%= fyre.type%>, Address: <%= fyre.address %></li>
+  <% end %>
+</ul>
+
+<p>Last Updated: <%= @last_pulled.value %></p>
+
+

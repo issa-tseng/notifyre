@@ -9,19 +9,34 @@ Sequel.migration do
 
     create_table :points do
       primary_key :id
+
+      # User-specified name for this point
       String :name, :null => false
-      String :human_address, :hull => true
+
+      # The address we geocoded to get our lat/lon
+      String :human_address, :null => true
+
+      # The actual location
       Float :latitude, :null => false
       Float :longitude, :null => false
+
+      # Radius, in fractional statute miles
       Float :radius, :null => false
 
       foreign_key :user_id, :users
+    end
+
+    create_table :configurations do
+      primary_key :id
+      String :name, :null => false, :unique => true
+      String :value, :null => false
     end
   end
 
   down do
     drop_table :users
     drop_table :points
+    drop_table :configurations
   end
 end
 

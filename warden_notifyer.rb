@@ -1,4 +1,6 @@
 require 'warden'
+
+ConnectionManager.manual_connect!
 require 'model/user'
 
 Warden::Manager.before_failure do |env, opts|
