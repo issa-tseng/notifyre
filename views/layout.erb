@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Notifyre</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css"/>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Notifyre</h1>
+
+      <div class="content">
+        <%= yield :layout %>
+      </div>
+
+      <div class="endcap"></div>
+    </div>
+
+    <ul class="footer">
+      <li class="left">
+        Built for the <a href="http://www.gnomedex.com/blog/2010/08/gnomedex-10-hackathon/">government open data hackathon</a> at <a href="http://www.gnomedex.com/">Gnomedex 2010</a>. Code on <a href="http://github.com/clint-tseng/notifyre">GitHub</a>.
+      </li>
+      <li class="right">
+        <a href="http://www.socrata.com"><img src="http://www.socrata.com/images/static/badges/105x51_blue.png" width="105" height="51" border="0" alt="Powered by Socrata" /></a>
+      </li>
+    </ul>
+  </body>
+</html>
