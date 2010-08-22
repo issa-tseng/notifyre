@@ -1,6 +1,7 @@
 begin
   # use already-installed bundle
-  require ::File.expand_path('../.bundle/environment', __FILE__)
+  bundle_path = (ENV['RACK_ENV'] == 'development') ? '.bundle/environment' : '../.bundle/environment';
+  require ::File.expand_path(bundle_path, __FILE__)
 rescue LoadError
   # apparently we haven't bundled yet.
   require 'rubygems'
