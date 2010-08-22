@@ -1,12 +1,6 @@
 require 'sequel'
 require 'sequel/extensions/migration'
 
-require 'model/connection_manager'
-require 'model/user'
-require 'model/site'
-require 'model/update'
-require 'model/status'
-
 namespace :db do
   task :migrate do
     db = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://status.db')

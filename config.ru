@@ -8,8 +8,12 @@ rescue LoadError
   Bundler.setup
 end
 
+require 'rubygems'
+require 'socrata'
 require 'model/connection_manager'
 require 'notifyre'
+require 'sinatra'
+require 'warden'
 
 use Rack::Session::Cookie, :secret => 'uW6kntnyhzJ7QGHdZFwoS0la7i2irxqryhTr8JQ6gWiOqwHZEONumLsgX8SEfMG'
 use ConnectionManager
