@@ -5,14 +5,11 @@ require 'socrata'
 Rack::ConnectionManager.manual_connect!
 
 require 'model/configuration'
-#require 'model/point'
-#require 'model/user'
+require 'model/alert'
+require 'model/user'
+require 'lib/tropo'
 
 class Notifyre < Sinatra::Base
-
-  before do
-  end
-
   get '/' do
     erb :index
   end
@@ -60,11 +57,17 @@ class Notifyre < Sinatra::Base
     # Get all the new fyres
     rows = socrata.view("kzjm-xkqj").filter(filter)
     @fyres = []
+    @matches = {}
+    tropo = Tropo.new
     rows.each do |row|
-      @fyres << Fyre.new(row)
+      fyre = Fyre.new(row)
+      alerts = Alert.trigger(fyre)
+      if alerts.count > 0
+        @matches[fyre] = alerts
+        tropo.send_text('17342761100', "There are #{alerts.count} things on fire near you now")
+      end
+      @fyres << fyre
     end
-
-    # See who might have a notification on this
 
     @last_pulled.value = Time.now.to_i
     @last_pulled.save

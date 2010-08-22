@@ -1,8 +1,16 @@
 <h2>Fires? We don't need no stikin fires.</h2>
 
+<h1>Fires:</h1>
 <ul>
   <% @fyres.each do |fyre| %>
-    <li>Type: <%= fyre.type%>, Address: <%= fyre.address %></li>
+    <li>Type: <%= fyre.type %>, Address: <%= fyre.address %>, Location: <%= fyre.latitude %>, <%= fyre.longitude %></li>
+  <% end %>
+</ul>
+
+</h1>Matches:</h1>
+<ul>
+  <% @matches.each do |fyre, alerts| %>
+    <li>Type: <%= fyre.type %>, Address: <%= fyre.address %></li>
   <% end %>
 </ul>
 
