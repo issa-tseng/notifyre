@@ -4,22 +4,18 @@ dependencies:
     group: 
     - :default
     version: = 0.2
-  pg: 
-    group: 
-    - :default
-    version: = 0.9.0
   sqlite3-ruby: 
     group: 
     - :development
     version: = 1.3.1
-  rack: 
-    group: 
-    - :default
-    version: = 1.1.0
   geokit: 
     group: 
     - :default
     version: = 1.5.0
+  rack: 
+    group: 
+    - :default
+    version: = 1.1.0
   sinatra: 
     group: 
     - :default
@@ -28,14 +24,14 @@ dependencies:
     group: 
     - :default
     version: = 0.2.1
-  sequel: 
-    group: 
-    - :default
-    version: = 3.14.0
   warden: 
     group: 
     - :default
     version: = 0.10.7
+  sequel: 
+    group: 
+    - :default
+    version: = 3.14.0
 specs: 
 - crack: 
     version: 0.1.8
@@ -47,8 +43,6 @@ specs:
     version: 0.6.1
 - json: 
     version: 1.4.6
-- pg: 
-    version: 0.9.0
 - rack: 
     version: 1.1.0
 - sequel: 
@@ -63,7 +57,7 @@ specs:
     version: 1.3.1
 - warden: 
     version: 0.10.7
-hash: f92ba8e98478bd1cb2b5d53b2a6f0723911c3c09
+hash: 4e94faa40caca732b98b89677e476be356abefc1
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
