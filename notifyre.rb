@@ -21,11 +21,15 @@ class Notifyre < Sinatra::Base
   end
 
   get '/manage' do
+    @user = env['warden'].user
+    return error_permission_denied if @user.nil
+
     erb :manage
   end
 
   post '/signup' do
     user = User.create(params['user'])
+    user.set_password(params['user']['password'])
     alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5 }))
     user.alerts << alert
     user.save
@@ -114,6 +118,12 @@ class Notifyre < Sinatra::Base
     @last_pulled.save
 
     erb :update
+  end
+
+private
+  def error_permission_denied
+    status 401
+    return { :error => 'permission denied' }.to_json
   end
 
 end
