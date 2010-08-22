@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'lib/tropo.rb'
 
 class String
   def self.random_chars( length )
@@ -10,10 +11,14 @@ end
 class User < Sequel::Model
   one_to_many :alerts
 
+  def before_create
+    self.password (String.random_char 10)
+    Tropo.send_text(self.phone_number,'Reply with \"VERIFY\" to complete signup.  Your password is: '+self.password)
+    self.salt = Time.now.to_f.to_s
+  end
+
   def before_save
     self.email = self.email.to_s.downcase
-    self.salt = Time.now.to_f.to_s
-    self.password = User.hash_password(self.password, self.salt)
   end
 
   def authenticate?(plaintext)
@@ -26,14 +31,12 @@ class User < Sequel::Model
     return new_password
   end
 
-  def authenticate?(plaintext)
-    return ((User.hash_password plaintext, self.salt) == password)
+  def password=(plaintext)
+    self.password = (User.hash_password plaintext, self.salt)
   end
 
-  def reset_password!
-    new_password = (String.random_chars 10)
-    self.password = new_password
-    return new_password
+  def authenticate?(plaintext)
+    return ((User.hash_password plaintext, self.salt) == password)
   end
 
 private
