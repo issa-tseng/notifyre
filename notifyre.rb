@@ -54,8 +54,7 @@ class Notifyre < Sinatra::Base
                 :column_id => 2354168
               },
               { :type => "literal",
-                :value => @last_pulled.value
-                #:value => (Time.now - 2 * 24 * 60 * 60).to_i
+                :value => params["demo"] ? (Time.now - 2*24*60*60).to_i : @last_pulled.value
               }
             ]
           }
