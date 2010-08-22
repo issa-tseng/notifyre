@@ -148,9 +148,11 @@ input[type=password]
     border-radius: 0.2em;
     -moz-border-radius: 0.2em;
     webkit-border-radius: 0.2em;
+    -webkit-border-radius: 0.2em;
     box-shadow: 0 0 0.3em rgba(0,0,0,0.15), inset 0 0 0.5em rgba(0,0,0,0.3);
     -moz-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
     webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 0 0.3em rgba(0,0,0,0.1), inset 0 0 0.5em rgba(0,0,0,0.3);
     display: block;
     font-size: 2.3em;
     margin-bottom: 0.6em;
@@ -172,9 +174,11 @@ input[type=submit]
     border-radius: 0.2em;
     -moz-border-radius: 0.2em;
     webkit-border-radius: 0.2em;
+    -webkit-border-radius: 0.2em;
     box-shadow: 0 0 5px rgba(0,0,0,0.4), inset 0 0 13px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,0.4), inset 0 0 13px rgba(0,0,0,0.1);
     webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4), inset 0 0 13px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4), inset 0 0 13px rgba(0,0,0,0.1);
     color: #fff;
     cursor: pointer;
     display: inline-block;
