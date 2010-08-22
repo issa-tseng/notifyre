@@ -23,7 +23,6 @@ class Notifyre < Sinatra::Base
 
   end
 
-
   get '/update' do
     # Figure out when we last pulled
     @last_pulled = Configuration.first(:name => "last_pulled")
@@ -55,8 +54,8 @@ class Notifyre < Sinatra::Base
                 :column_id => 2354168
               },
               { :type => "literal",
-                #:value => @last_pulled.value
-                :value => (Time.now - 2 * 24 * 60 * 60).to_i
+                :value => @last_pulled.value
+                #:value => (Time.now - 2 * 24 * 60 * 60).to_i
               }
             ]
           }
@@ -73,7 +72,9 @@ class Notifyre < Sinatra::Base
       alerts = Alert.trigger(fyre)
       if alerts.count > 0
         @matches[fyre] = alerts
-        Tropo.send_text('17342761100', "There are #{alerts.count} things on fire near you now")
+        alerts.each do |alert|
+          Tropo.make_call(alert.user.phone_number, ",,,There is a #{fyre.type} near #{alert.name}. Run for your life!")
+        end
       end
       @fyres << fyre
     end
