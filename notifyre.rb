@@ -4,7 +4,7 @@ require 'sinatra'
 class Notifyre < Sinatra::Base
 
   get '/' do
-    "Your house is on fyre!!!"
+    erb :index
   end
 
   get '/update' do

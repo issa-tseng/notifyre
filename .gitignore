@@ -1,4 +1,6 @@
 *.swp
 *.db
 .DS_Store
+.bundle
+*.psd
 
