@@ -43,6 +43,16 @@ class Notifyre < Sinatra::Base
     redirect '/', 302
   end
 
+  get '/confirm_user' do
+    begin
+      user = User.first(:phone_number => params['user']['phone_number'])
+      user.confirm!
+      user.save
+    rescue
+      'fail'
+    end
+  end
+
   post '/signin' do
     env['warden'].authenticate(:notifyre_user)
     if env['warden'].authenticated?
@@ -123,6 +133,11 @@ class Notifyre < Sinatra::Base
     @last_pulled.save
 
     erb :update
+  end
+
+  get '/notadmin' do
+    users = User.all
+    erb :notadmin
   end
 
 private

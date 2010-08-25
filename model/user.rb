@@ -12,9 +12,10 @@ class User < Sequel::Model
   one_to_many :alerts
 
   def before_create
-    self.set_password(String.random_chars(10))
-    Tropo.send_text(self.phone_number,'Reply with \"VERIFY\" to complete signup.  Your password is: '+self.password)
+    new_password = (String.random_chars(10))
+    self.set_password(new_password)
     self.salt = Time.now.to_f.to_s
+    Tropo.send_text(self.phone_number,'Reply with "VERIFY" to complete signup.  Your password is: '+new_password)
   end
 
   def before_save
@@ -29,6 +30,10 @@ class User < Sequel::Model
     new_password = (String.random_chars 10)
     self.set_password(new_password)
     return new_password
+  end
+
+  def confirm!
+    self.confirm = true
   end
 
   def set_password(plaintext)
