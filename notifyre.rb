@@ -31,7 +31,7 @@ class Notifyre < Sinatra::Base
     begin
       user = User.create(params['user'])
       user.set_password(params['user']['password'])
-      alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5 }))
+      alert = Alert.create(params['alert'].merge({ :name => 'default', :radius => 0.5, :user_id => user.id }))
       user.alerts << alert
       user.save
     rescue
