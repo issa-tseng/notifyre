@@ -26,7 +26,7 @@ Warden::Strategies.add(:notifyre_user) do
   end
 
   def authenticate!
-    user = User.find params['email']
+    user = User.first(:email => params['email'])
 
     if user.nil? or !(user.authenticate? params['password'])
       fail! "authentication failed"

@@ -13,8 +13,8 @@ class User < Sequel::Model
 
   def before_create
     new_password = (String.random_chars(5))
-    self.set_password(new_password)
     self.salt = Time.now.to_f.to_s
+    self.set_password(new_password)
     Tropo.send_text(self.phone_number,'Reply with "VERIFY" to complete signup.  Your password is: '+new_password)
   end
 
@@ -38,10 +38,6 @@ class User < Sequel::Model
 
   def set_password(plaintext)
     self.password = User.hash_password(plaintext, self.salt)
-  end
-
-  def authenticate?(plaintext)
-    return ((User.hash_password plaintext, self.salt) == password)
   end
 
 private
